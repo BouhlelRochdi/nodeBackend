@@ -9,6 +9,10 @@ const userApi = require('./routes/userApi');
 const todoApi = require('./routes/todoApi');
 const mailApi = require('./routes/mailApi');
 const fileUpload = require('./routes/fileUpload');
+const autoLoadFile = require('./routes/autoLoadApi');
+const register = require('./routes/authRegister');
+const login = require('./routes/authLogin');
+
 
 // config
 app.use(cors());
@@ -30,6 +34,8 @@ app.use('/api/v1', userApi);
 app.use('/api/v1', todoApi);
 app.use('/api/v1', mailApi);
 app.use('/api/v1', fileUpload);
+app.use('/api/v1', register);
+app.use('/api/v1', login);
 
 
 app.listen(port, () => {
