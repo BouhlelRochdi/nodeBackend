@@ -1,8 +1,10 @@
 const express = require('express');
 const todoSchema = require('../models/todoSchema');
 const router = express.Router();
+const passport = require('passport');
 
-router.get('/todos', async(req, res) => {
+
+router.get('/todos', passport.authenticate('bearer', { session: false }) ,async(req, res) => {
     const todos = await todoSchema.find();
     res.json(todos);
 });
