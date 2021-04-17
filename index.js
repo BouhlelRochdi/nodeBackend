@@ -12,6 +12,7 @@ const fileUpload = require('./routes/fileUpload');
 const autoLoadFile = require('./routes/autoLoadApi');
 const register = require('./routes/authRegister');
 const login = require('./routes/authLogin');
+const passport = require('./passport/passport')
 
 
 // config
