@@ -4,8 +4,14 @@ const router = express.Router();
 
 
 router.get('/users', async(req, res) => {
-    const users = await userSchema.find();
-    res.json(users);
+    try{
+
+        const users = await userSchema.find();
+        res.json(users);
+    }catch(error)
+    {
+        res.status(500).json({message : 'Internal server error'});
+    }
 });
 
 
