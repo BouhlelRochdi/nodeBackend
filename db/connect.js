@@ -5,4 +5,5 @@ mongoose.connect('mongodb://localhost:27017/challenge1', {useNewUrlParser: true,
     console.log('error to connecting to DB');
 });
 //mongoose.connect('mongodb://localhost:27017/challenge2', {useNewUrlParser: true});
+//useUnifiedTopology c'est afficher dans le console, on l'a mis ici pour ignorer le msg qui s'affiche tt le temps
 
