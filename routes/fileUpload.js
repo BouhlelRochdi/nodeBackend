@@ -16,11 +16,31 @@ const myStorage = multer.diskStorage({
     }, 
     filename: (req, file, callback) => {
         const name = Date.now() + path.extname(file.originalname);
+        console.log(path.extname(file.originalname));
         callback(null, name );
     }
 });
 
-const uploads = multer({ storage : myStorage });
+function fileFilterFn (req, file, cb) {
+ 
+    // The function should call `cb` with a boolean
+    // to indicate if the file should be accepted
+   if (path.extname(file.originalname) == ".jpg" || path.extname(file.originalname) ==".jpeg" || path.extname(file.originalname) ==".png" ){
+
+       // To accept the file pass `true`, like so:
+       cb(null, true)
+   }
+    // To reject this file pass `false`, like so:
+    cb(null, false)
+   
+    
+   
+    // You can always pass an error if something goes wrong:
+    cb(new Error('Only images allowed'))
+   
+  }
+
+const uploads = multer({ storage : myStorage, fileFilter : fileFilterFn});
 
 router.post('/uploads', uploads.single('avatar') ,  (req, res) => {
     res.json({ message : 'image uploaded successfuly!'});

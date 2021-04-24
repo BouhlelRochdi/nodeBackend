@@ -30,7 +30,7 @@ router.get('/login', async (req, res) => {
                     id : user._id,
                     email : user.email
                 };
-                // create a token
+                // create a token with tokenData as parameter
                 const token = jwt.sign(tokenData, 'shhhhh', {expiresIn:'1d'});
 
                 res.json({ message: '===> User exist, welcome', token : token });
